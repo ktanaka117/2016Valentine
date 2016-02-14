@@ -63,7 +63,7 @@ struct Sweet {
             && ingredientNames.contains("Nut")
             && ingredientNames.contains("Chocolate")
         {
-            self.name = "Pownd Cake"
+            self.name = "Pound Cake"
         }
     }
 }
