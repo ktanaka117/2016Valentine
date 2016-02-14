@@ -3,7 +3,7 @@
 import Foundation
 
 protocol Person {
-    func makeSweet(ingredients: [Ingredient]) -> Sweet
+    func makeSweet(name: String, ingredients: [Ingredient]) -> Sweet
     
     func eat(sweet: Sweet)
     func present(sweet: Sweet, to: Person?) throws
@@ -39,7 +39,9 @@ struct Ingredient {
 struct Sweet {
     var name: String = ""
     
-    init(ingredients: [Ingredient]) {
+    init(name: String, ingredients: [Ingredient]) {
+        self.name = name
+        
         var ingredientNames: [String] = []
         
         for ingredient in ingredients {
@@ -72,8 +74,8 @@ struct KTanaka: Person {
     
     var name: String = "ktanaka"
     
-    func makeSweet(ingredients: [Ingredient]) -> Sweet {
-        return Sweet(ingredients: ingredients)
+    func makeSweet(name: String, ingredients: [Ingredient]) -> Sweet {
+        return Sweet(name: "Pound Cake", ingredients: ingredients)
     }
     
     func present(sweet: Sweet, to: Person?) throws {
@@ -108,7 +110,7 @@ let ingredients = [butter, sugar, egg, weakFlour, bakingPowder, nut, chocolate]
     My Valentine this year
 */
 let ktanaka = KTanaka()
-let poundCake = ktanaka.makeSweet(ingredients)
+let poundCake = ktanaka.makeSweet("Pound Cake", ingredients: ingredients)
 
 do {
     try ktanaka.present(poundCake, to: nil)
